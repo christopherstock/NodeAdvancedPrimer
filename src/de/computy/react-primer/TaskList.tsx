@@ -35,7 +35,45 @@
 
             for ( let taskIndex:number = 0; taskIndex < this.props.taskList.length; ++ taskIndex )
             {
-                taskItems.push( <li key={ taskIndex }>{ this.props.taskList[ taskIndex ] }</li> );
+                taskItems.push
+                (
+                    <li key={ taskIndex }>
+
+                        <div>
+
+                            { /* The item description */ }
+                            { this.props.taskList[ taskIndex ] }
+
+                            { /* Button 'Delete' */ }
+                            <button
+                                onClick={ ():void => { this.props.onTaskDelete( taskIndex ); } }
+                                className="button"
+                            >
+                                &#10006;
+                            </button>
+
+                            { /* Button 'Move Down' */ }
+                            <button
+                                onClick={ ():void => { this.props.onTaskMoveDown( taskIndex ); } }
+                                disabled={ taskIndex === this.props.taskList.length - 1 }
+                                className="button"
+                            >
+                                &#9660;
+                            </button>
+
+                            { /* Button 'Move Up' */ }
+                            <button
+                                onClick={ ():void => { this.props.onTaskMoveUp( taskIndex ); } }
+                                disabled={ taskIndex === 0 }
+                                className="button"
+                            >
+                                &#9650;
+                            </button>
+
+                        </div>
+
+                    </li>
+                );
             }
 
             return taskItems;

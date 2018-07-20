@@ -52,7 +52,12 @@
                 </button>
 
                 { /* task list */ }
-                <rp.TaskList taskList={ this.state.taskList } />
+                <rp.TaskList
+                    taskList={ this.state.taskList }
+                    onTaskDelete={   ( taskIndex:number ):void => { this.deleteTask(   taskIndex ); } }
+                    onTaskMoveUp={   ( taskIndex:number ):void => { this.moveTaskUp(   taskIndex ); } }
+                    onTaskMoveDown={ ( taskIndex:number ):void => { this.moveTaskDown( taskIndex ); } }
+                />
 
             </div>;
         }
@@ -76,5 +81,84 @@
                     taskList: newTaskList,
                 }
             );
+        }
+
+        /**
+        *   Deletes the task with the specified index.
+        *
+        *   @param taskIndex The index of the task to delete.
+        */
+        private deleteTask( taskIndex:number ) : void
+        {
+            console.log( 'App.deleteTask( ' + taskIndex + ' ) being invoked' );
+
+            // copy original array
+            const newTaskList:string[] = this.state.taskList.slice();
+            newTaskList.splice( taskIndex, 1 );
+
+            // set new state forcing the component to re-render
+            this.setState(
+                {
+                    taskList: newTaskList,
+                }
+            )
+        }
+
+        /**
+        *   Moves the task with the specified index up.
+        *
+        *   @param taskIndex The index of the task to move up.
+        */
+        private moveTaskUp( taskIndex:number ) : void
+        {
+            console.log( 'App.moveTaskUp( ' + taskIndex + ' ) being invoked' );
+
+            if ( taskIndex > 0 )
+            {
+                // copy original array
+                const newTaskList    :string[] = this.state.taskList.slice();
+
+                const taskToMoveUp   :string   = newTaskList[ taskIndex     ];
+                const taskToMoveDown :string   = newTaskList[ taskIndex - 1 ];
+
+                newTaskList[ taskIndex - 1 ] = taskToMoveUp;
+                newTaskList[ taskIndex     ] = taskToMoveDown;
+
+                // set new state forcing the component to re-render
+                this.setState(
+                    {
+                        taskList: newTaskList,
+                    }
+                )
+            }
+        }
+
+        /**
+        *   Moves the task with the specified index down.
+        *
+        *   @param taskIndex The index of the task to move down.
+        */
+        private moveTaskDown( taskIndex:number ) : void
+        {
+            console.log( 'App.moveTaskDown( ' + taskIndex + ' ) being invoked' );
+
+            if ( taskIndex < this.state.taskList.length - 1 )
+            {
+                // copy original array
+                const newTaskList    :string[]  = this.state.taskList.slice();
+
+                const taskToMoveDown :string    = newTaskList[ taskIndex     ];
+                const taskToMoveUp   :string    = newTaskList[ taskIndex + 1 ];
+
+                newTaskList[ taskIndex + 1  ] = taskToMoveDown;
+                newTaskList[ taskIndex      ] = taskToMoveUp;
+
+                // set new state forcing the component to re-render
+                this.setState(
+                    {
+                        taskList: newTaskList,
+                    }
+                )
+            }
         }
     }
