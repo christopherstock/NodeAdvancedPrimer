@@ -9,6 +9,8 @@
     {
         console.log( 'window.onload() invoked test' );
 
+        const APP_TITLE:string = 'React Task List';
+
         // create a main container and append to it to the body
         const mainContainer:HTMLDivElement = document.createElement( 'div' );
         mainContainer.id = 'mainContainer';
@@ -16,7 +18,9 @@
 
         // render the App component into the main container
         ReactDOM.render(
-            <rp.App />,
+            <rp.App
+                title={ APP_TITLE }
+            />,
             mainContainer
         );
     };

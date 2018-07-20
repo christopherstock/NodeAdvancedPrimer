@@ -5,7 +5,7 @@
     /**
     *   The entire application component.
     */
-    export class App extends React.Component<any, any>
+    export class App extends React.Component<rp.AppProps, any>
     {
         /**
         *   Being invoked every time this component renders.
@@ -19,7 +19,7 @@
             return <div>
 
                 { /* title */ }
-                <h1 id="appTitle">Static App Title</h1>
+                <h1 id="appTitle">{ this.props.title }</h1>
 
             </div>;
         }
