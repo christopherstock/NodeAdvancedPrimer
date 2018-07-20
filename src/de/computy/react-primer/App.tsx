@@ -1,6 +1,7 @@
 
-    import * as React from 'react';
-    import * as rp    from '.';
+    import * as React  from 'react';
+    import * as moment from 'moment';
+    import * as rp     from '.';
 
     /**
     *   The entire application component.
@@ -43,6 +44,13 @@
                 { /* title */ }
                 <h1 id="appTitle">{ this.props.title }</h1>
 
+                { /* new task button */ }
+                <button id="submitButton" className="button" onClick={
+                    () : void => { this.createTask( 'New Task on [' + moment().format() + ']' ); }
+                }>
+                    Create Task
+                </button>
+
                 { /* task list */ }
                 <ul id="taskList">{ this.createTaskList() }</ul>
 
@@ -67,5 +75,26 @@
             }
 
             return taskItems;
+        }
+
+        /**
+        *   Creates a new task.
+        *
+        *   @param taskName The name of the task to create.
+        */
+        private createTask( taskName:string ) : void
+        {
+            console.log( 'App.createTask( ' + taskName + ' ) being invoked' );
+
+            // copy original array
+            const newTaskList:string[] = this.state.taskList.slice();
+            newTaskList.push( taskName );
+
+            // set new state forcing the component to re-render
+            this.setState(
+                {
+                    taskList: newTaskList,
+                }
+            );
         }
     }
