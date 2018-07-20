@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target":               "es5",
+        "module":               "commonjs",
+        "outDir":               "./bin/",
+        "declaration":          true,
+        "sourceMap":            true,
+        "strict":               true,
+        "noImplicitAny":        false,
+        "strictNullChecks":     false,
+        "downlevelIteration":   true,
+        "jsx":                  "react",
+        "lib":                  [ "es5", "es6", "dom" ],
+        "typeRoots": [
+            "node_modules/@types"
+        ]
+    },
+
+    "include": [
+        "src/**/*"
+    ]
+}
