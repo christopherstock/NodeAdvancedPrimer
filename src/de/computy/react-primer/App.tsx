@@ -44,12 +44,10 @@
                 { /* title */ }
                 <h1 id="appTitle">{ this.props.title }</h1>
 
-                { /* new task button */ }
-                <button id="submitButton" className="button" onClick={
-                    () : void => { this.createTask( 'New Task on [' + moment().format() + ']' ); }
-                }>
-                    Create Task
-                </button>
+                { /* task input form */ }
+                <rp.TaskInput
+                    onTaskCreate={ ( taskName:string ) :void => { this.createTask( taskName ); } }
+                />
 
                 { /* task list */ }
                 <rp.TaskList
