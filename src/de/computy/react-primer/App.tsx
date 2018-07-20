@@ -52,29 +52,9 @@
                 </button>
 
                 { /* task list */ }
-                <ul id="taskList">{ this.createTaskList() }</ul>
+                <rp.TaskList taskList={ this.state.taskList } />
 
             </div>;
-        }
-
-        /**
-        *   Creates an array of task items.
-        *
-        *   @return All task list items.
-        */
-        private createTaskList() : JSX.Element[]
-        {
-            const taskItems:JSX.Element[] = [];
-
-            for ( let taskIndex:number = 0; taskIndex < this.state.taskList.length; ++taskIndex )
-            {
-                taskItems.push
-                (
-                    <li key={ taskIndex }>{ this.state.taskList[ taskIndex ] }</li>
-                );
-            }
-
-            return taskItems;
         }
 
         /**
