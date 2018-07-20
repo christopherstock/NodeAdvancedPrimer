@@ -1,11 +1,12 @@
 
     import * as React from 'react';
+    import * as rp    from '.';
 
     /**
     *   Represents the input component that lets the user create new tasks.
     *   This is an example for a stateful and uncontrolled component.
     */
-    export class TaskInput extends React.Component<any, any>
+    export class TaskInput extends React.Component<rp.TaskInputProps, rp.TaskInputState>
     {
         /**
         *   Initializes this component by setting the initial state.
