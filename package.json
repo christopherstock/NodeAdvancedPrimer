@@ -1,0 +1,23 @@
+{
+  "name": "NodeAdvancedPrimer",
+  "version": "1.0.0",
+  "description": "![NodeReactAdvanced](https://github.com/christopherstock/NodeReactAdvanced/raw/master/_ASSETS/promo/promo1.jpg)\r #### Node.js & React Advanced Primer - A quick guide to Node.js, TypeScript, Webpack and React.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christopherstock/NodeAdvancedPrimer.git"
+  },
+  "keywords": [],
+  "author": "Christopher Stock <email@christopherstock.de> (http://www.christopherstock.de)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christopherstock/NodeAdvancedPrimer/issues"
+  },
+  "homepage": "https://github.com/christopherstock/NodeAdvancedPrimer#readme",
+  "devDependencies": {
+    "typescript": "^2.9.2"
+  }
+}
