@@ -32,7 +32,7 @@
         "no-bitwise": true,
         "no-conditional-assignment": true,
         "no-consecutive-blank-lines": [true],
-        "no-console": true,
+        "no-console": false,
         "no-empty": false,
         "no-empty-interface": true,
         "no-irregular-whitespace": false,
