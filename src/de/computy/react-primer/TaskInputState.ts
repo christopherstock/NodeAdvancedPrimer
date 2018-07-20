@@ -6,4 +6,7 @@
     {
         /** Indicates if an input error is currently present. */
         inputError :boolean;
+
+        /** The current content of the input field. */
+        inputText  :string;
     }

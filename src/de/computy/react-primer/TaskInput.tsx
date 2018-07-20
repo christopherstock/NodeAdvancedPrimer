@@ -19,6 +19,7 @@
 
             this.state = {
                 inputError: false,
+                inputText:  '',
             }
         }
 
@@ -39,6 +40,8 @@
                     type="text"
                     maxLength={ 50 }
                     className={ ( this.state.inputError ? 'input error' : 'input' ) }
+                    value={     this.state.inputText }
+                    onChange={  ( event:React.ChangeEvent ) :void => { this.onInputChange( event ); } }
                 />
 
                 <br />
@@ -66,12 +69,8 @@
             // suppress page reload
             event.preventDefault();
 
-            // get input field and trim entered text
-            const inputField  :HTMLInputElement = event.target.firstChild;
-            const enteredText :string           = inputField.value.trim();
-
-            // clear input field
-            inputField.value = '';
+            // trim entered text
+            const enteredText:string = this.state.inputText.trim();
 
             // check entered text
             console.log( 'Trimmed text in the box is [' + enteredText + ']' );
@@ -83,6 +82,7 @@
                 this.setState(
                     {
                         inputError: true,
+                        inputText:  '',
                     }
                 );
             }
@@ -92,6 +92,7 @@
                 this.setState(
                     {
                         inputError: false,
+                        inputText:  '',
                     }
                 );
 
@@ -99,4 +100,21 @@
                 this.props.onTaskCreate( enteredText );
             }
         };
+
+        /**
+        *   Being invoked when the input field value changes.
+        *
+        *   @param event The event when the input field value changes.
+        */
+        private onInputChange( event:any ) : void
+        {
+            console.log( 'TaskInput.onInputChange being invoked' );
+
+            this.setState(
+                {
+                    inputError: false,
+                    inputText:  event.target.value,
+                }
+            );
+        }
     }
